@@ -26,7 +26,7 @@ const Graph = () => {
       },
     } = list;
 
-    console.log("graph list: ", list);
+    // console.log("graph list: ", list);
     return (
       <Container>
         <Top>
@@ -36,7 +36,11 @@ const Graph = () => {
               style: "currency",
             }).format(usd)}
           </Price>
-          <Change>{change}</Change>
+          <Change
+            style={{ color: String(change)[0] === "-" ? "red" : "green" }}
+          >
+            {change}
+          </Change>
         </Top>
         <Bottom>
           <Line

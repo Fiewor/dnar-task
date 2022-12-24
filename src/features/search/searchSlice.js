@@ -1,19 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchMarketLeaders } from "./marketAPI";
+import { fetchSearchList } from "./searchAPI";
 
 const initialState = {
-  list: [],
+  coins: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
 
-export const listMarketLeaders = createAsyncThunk(
-  "market/fetchMarketLeaders",
-  async (thunkAPI) => {
+export const listSearchItems = createAsyncThunk(
+  "search/fetchSearch",
+  async (input, thunkAPI) => {
     try {
-      return await fetchMarketLeaders();
+      return await fetchSearchList(input);
     } catch (error) {
       console.log("error: ", error);
       const message =
@@ -27,21 +27,21 @@ export const listMarketLeaders = createAsyncThunk(
   }
 );
 
-export const marketSlice = createSlice({
-  name: "market",
+export const searchSlice = createSlice({
+  name: "search",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(listMarketLeaders.pending, (state) => {
+      .addCase(listSearchItems.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(listMarketLeaders.fulfilled, (state, action) => {
+      .addCase(listSearchItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.list = action.payload;
+        state.coins = action.payload;
       })
-      .addCase(listMarketLeaders.rejected, (state, action) => {
+      .addCase(listSearchItems.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -49,8 +49,4 @@ export const marketSlice = createSlice({
   },
 });
 
-export const selectMarket = (state) => state.market;
-
-// export const { } = counterSlice.actions;
-
-export default marketSlice.reducer;
+export default searchSlice.reducer;

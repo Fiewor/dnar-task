@@ -1,7 +1,6 @@
 import axios from "axios";
+import { URI } from "../coin/coinAPI";
 
-export const URI = "https://api.coingecko.com/api/v3";
-
-export async function fetchCoinDetails(coinName) {
+export async function fetchCoinDetails(coinName = "bitcoin") {
   return axios.get(`${URI}/coins/${coinName}`).then((res) => res.data);
 }

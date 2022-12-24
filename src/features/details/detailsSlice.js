@@ -27,10 +27,18 @@ export const listCoinDetails = createAsyncThunk(
   }
 );
 
-export const coinSlice = createSlice({
+export const detailsSlice = createSlice({
   name: "details",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      state.list = [];
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = "";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(listCoinDetails.pending, (state) => {
@@ -45,9 +53,10 @@ export const coinSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.user = null;
       });
   },
 });
 
-export default coinSlice.reducer;
+export const { reset } = detailsSlice.actions;
+
+export default detailsSlice.reducer;

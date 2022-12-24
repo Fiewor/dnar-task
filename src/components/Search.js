@@ -1,26 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import AsyncSelect from "react-select/async";
+
+import { listSearchItems } from "../features/search/searchSlice";
+import { listCoinDetails, reset } from "../features/details/detailsSlice";
 
 const Search = () => {
-  // placeholder. use dispatch to update search text in redux store
-  const handleSearch = (value) => {
-    console.log("search input: ", value);
-    // search?query={value}
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleDropDownClick = (value) => {
+    dispatch(listCoinDetails(value.toLowerCase()));
+    navigate("/details");
+  };
+
+  const { coins, isSuccess } = useSelector((state) => state.search);
+
+  useEffect(() => {}, [isSuccess]);
+
+  const handleSearch = (inputValue) => {
+    // dispatch(reset());
+    dispatch(listSearchItems(inputValue));
+    return coins.map(({ id, name, symbol }) => ({
+      label: name,
+      value: name,
+    }));
+  };
+
+  const defaultOptions = defaultCoinList.map(({ id, name, symbol }) => ({
+    label: name,
+    value: name,
+  }));
+
+  const loadOptions = (inputValue, callback) => {
+    console.log("coin data: ", coins);
+    callback(handleSearch(inputValue));
   };
 
   return (
     <Container>
       <FaSearch color="blue" />
-      <Input
-        type="text"
-        name="search"
+      <AsyncSelect
         placeholder="search"
-        // value={input}
-        // onChange={(value) => {
-        //   handleSearch(value);
-        // }}
-      ></Input>
+        defaultOptions={defaultOptions}
+        loadOptions={loadOptions}
+        onChange={() => handleDropDownClick(coins[0].name)}
+      />
     </Container>
   );
 };
@@ -37,12 +65,43 @@ const Container = styled.div`
   height: 2rem;
 `;
 
-const Input = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0.3rem 0.2rem;
-  background: #17151d;
-`;
+const defaultCoinList = [
+  {
+    id: "bitcoin",
+    name: "Bitcoin",
+    api_symbol: "bitcoin",
+    symbol: "BTC",
+    market_cap_rank: 1,
+    thumb: "https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png",
+    large: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+  },
+  {
+    id: "ethereum",
+    name: "Ethereum",
+    api_symbol: "ethereum",
+    symbol: "ETH",
+    market_cap_rank: 2,
+    thumb: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+    large: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+  },
+  {
+    id: "dogecoin",
+    name: "Dogecoin",
+    api_symbol: "dogecoin",
+    symbol: "DOGE",
+    market_cap_rank: 8,
+    thumb: "https://assets.coingecko.com/coins/images/5/thumb/dogecoin.png",
+    large: "https://assets.coingecko.com/coins/images/5/large/dogecoin.png",
+  },
+  {
+    id: "apenft",
+    name: "APENFT",
+    api_symbol: "apenft",
+    symbol: "NFT",
+    market_cap_rank: 190,
+    thumb: "https://assets.coingecko.com/coins/images/15687/thumb/apenft.jpg",
+    large: "https://assets.coingecko.com/coins/images/15687/large/apenft.jpg",
+  },
+];
 
 export default Search;

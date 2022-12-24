@@ -19,6 +19,13 @@ const Item = styled.div`
   border-radius: 15px;
   width: 30%;
   min-height: 5%;
+  cursor: pointer;
+  &:hover {
+    background: #661eda;
+  }
+  &:active {
+    background: #4c11ac;
+  }
   @media (max-width: 768px) {
     width: 40%;
     font-size: 0.9rem;

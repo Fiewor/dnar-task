@@ -45,7 +45,6 @@ export const coinSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.user = null;
       });
   },
 });

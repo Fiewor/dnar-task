@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { listCoinDetails } from "../features/details/detailsSlice";
 
@@ -51,7 +51,6 @@ const Container = styled.div`
   }
   &:active {
     background: #4c11ac;
-    ${"" /* #2e076d; */}
   }
 `;
 

@@ -32,7 +32,7 @@ const InfoCard = () => {
         },
       },
 
-      market_data: { total_supply = 0, max_supply = 0, circulating_supply = 0 },
+      market_data: { total_supply, max_supply, circulating_supply },
     } = list;
 
     return (
@@ -115,7 +115,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem 2rem;
-  margin: 0.5rem;
+  margin: 1.5rem 0.5rem;
   background: #241f2a;
   width: 25%;
   height: 100%;
