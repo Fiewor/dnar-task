@@ -24,6 +24,10 @@ const Container = styled.div`
   margin: 0 0.5rem;
   width: 100%;
   min-height: 85%;
+  @media (max-width: 768px) {
+    max-width: 10vw;
+    width: 20%;
+  }
 `;
 
 const Icon = styled.div`

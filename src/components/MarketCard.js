@@ -52,12 +52,17 @@ const Container = styled.div`
   &:active {
     background: #4c11ac;
   }
+  @media (max-width: 768px) {
+    gap: 0.2rem;
+    flex-direction: column;
+    ${"" /* align-items: flex-start; */}
+  }
 `;
 
 const Group = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.4rem;
 `;
 
 const SmallText = styled.p`

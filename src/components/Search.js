@@ -51,7 +51,6 @@ const Search = () => {
           container: (baseStyles) => ({
             ...baseStyles,
             width: "100%",
-            marginRight: "4rem",
           }),
           control: (baseStyles) => ({
             ...baseStyles,
@@ -84,6 +83,9 @@ const Container = styled.div`
   margin: 0.4rem 2rem 1rem 1rem;
   height: 2rem;
   width: 100%;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const defaultCoinList = [

@@ -53,6 +53,9 @@ function MarketLeaders() {
 const Container = styled.div`
   width: 100%;
   margin: 1rem 0.5rem;
+  @media (max-width: 768px) {
+    margin: auto;
+  }
 `;
 
 export default MarketLeaders;

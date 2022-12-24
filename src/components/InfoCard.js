@@ -8,6 +8,7 @@ const InfoCard = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.details
   );
+
   if (isLoading) {
     return <P>Loading...</P>;
   }
@@ -51,7 +52,7 @@ const InfoCard = () => {
           <a href={homepageURL} target="_blank" rel="noreferrer noopener">
             <SubGroup>
               <p>Website</p>
-              <FaChrome size="2em" color="#3f6eff" title="reddit icon" />
+              <FaChrome size="2em" color="#3f6eff" title="homepage" />
             </SubGroup>
           </a>
 
@@ -60,6 +61,7 @@ const InfoCard = () => {
               <FaReddit size="2em" color="#ff502c" title="reddit icon" />
             </SubGroup>
           </a>
+
           <a href={githubURL} target="_blank" rel="noreferrer noopener">
             <SubGroupBottom>
               <FaGithub size="2em" color="black" title="github icon" />

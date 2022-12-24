@@ -30,6 +30,12 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   background: #17151d;
+  @media (max-width: 768px) {
+    ${
+      "" /* display: grid;
+    grid-template-columns: 20% 40%; */
+    }
+  }
 `;
 
 export const Top = styled.div`
@@ -37,12 +43,19 @@ export const Top = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin: 0 0.5rem;
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 70vh;
+  @media (max-width: 768px) {
+    justify-content: space-around;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -59,6 +72,10 @@ export const IconContainer = styled.div`
   &:hover {
     background: white;
   }
+  @media (max-width: 768px) {
+    margin: 0.3rem 1em 0.5em;
+    max-width: 10vw;
+  } ;
 `;
 
 export default Home;

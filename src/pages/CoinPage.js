@@ -6,51 +6,59 @@ import MarketLeaders from "../components/MarketLeaders";
 const CoinPage = () => {
   return (
     <Content>
-      <Main>
-        <Container>
-          <Text>Market leaders</Text>
-          <MarketLeaders />
-        </Container>
+      <Container>
+        <Text>Market leaders</Text>
+        <MarketLeaders />
+      </Container>
 
-        <Container>
-          <Text>All Coins</Text>
-          <CoinList />
-        </Container>
-      </Main>
+      <Container>
+        <Text>All Coins</Text>
+        <CoinList />
+      </Container>
     </Content>
   );
 };
 
 export default CoinPage;
 
-const Content = styled.div`
+const Container = styled.div`
+  background-color: #241f2a;
+  border-radius: 30px;
+  padding: 0.5rem;
+  padding: 0.5rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 60%;
+  min-width: 50vw;
+  min-height: 30vh;
+  margin: 0.5em;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0.2em;
+    width: 100%;
+    margin: 0.5rem 0;
+    p {
+      align-self: center;
+    }
+  }
 `;
 
-const Main = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   width: 70%;
 `;
 
-const Container = styled.div`
-  background-color: #241f2a;
-  border-radius: 30px;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  margin: 1rem;
-  width: 60%;
-  min-width: 50vw;
-  min-height: 30vh;
-`;
-
 export const Text = styled.p`
   color: white;
   font-size: 2.5rem;
   margin: 1rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+  }
 `;

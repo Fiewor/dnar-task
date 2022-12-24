@@ -34,6 +34,9 @@ const Container = styled.div`
   margin: 1rem;
   padding: 1rem 0.2rem;
   border-radius: 20px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Text = styled.p`

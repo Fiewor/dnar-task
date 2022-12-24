@@ -26,11 +26,14 @@ const Item = styled.div`
   &:active {
     background: #4c11ac;
   }
+  p {
+    padding: 0 0.5rem;
+  }
   @media (max-width: 768px) {
     width: 40%;
     font-size: 0.9rem;
-  }
-  p {
-    padding: 0 0.5rem;
+    padding: 0.5em;
+
+    flex-direction: column;
   }
 `;

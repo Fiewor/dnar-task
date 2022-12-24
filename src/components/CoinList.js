@@ -41,7 +41,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
   padding: 1rem 0.5rem;
 `;
