@@ -36,7 +36,6 @@ const Search = () => {
   }));
 
   const loadOptions = (inputValue, callback) => {
-    console.log("coin data: ", coins);
     callback(handleSearch(inputValue));
   };
 
@@ -48,6 +47,22 @@ const Search = () => {
         defaultOptions={defaultOptions}
         loadOptions={loadOptions}
         onChange={() => handleDropDownClick(coins[0].name)}
+        styles={{
+          container: (baseStyles, state) => ({
+            ...baseStyles,
+            width: "100%",
+            marginRight: "4rem",
+          }),
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            backgroundColor: "#17151d",
+            border: "#17151d",
+          }),
+          placeholder: (baseStyles, state) => ({
+            ...baseStyles,
+            color: "white",
+          }),
+        }}
       />
     </Container>
   );
@@ -60,9 +75,10 @@ const Container = styled.div`
   background: #17151d;
   border-radius: 10px;
   border: white 0.2 linear;
-  padding: 0.8rem 1rem;
-  margin: 0 1rem;
+  padding: 1rem 1rem;
+  margin: 1rem 2rem 1rem 1rem;
   height: 2rem;
+  width: 100%;
 `;
 
 const defaultCoinList = [
