@@ -30,7 +30,7 @@ const Search = () => {
     }));
   };
 
-  const defaultOptions = defaultCoinList.map(({ id, name, symbol }) => ({
+  const defaultOptions = defaultCoinList.map(({ name }) => ({
     label: name,
     value: name,
   }));
@@ -46,21 +46,26 @@ const Search = () => {
         placeholder="search"
         defaultOptions={defaultOptions}
         loadOptions={loadOptions}
-        onChange={() => handleDropDownClick(coins[0].name)}
+        onChange={({ value }) => handleDropDownClick(value)}
         styles={{
-          container: (baseStyles, state) => ({
+          container: (baseStyles) => ({
             ...baseStyles,
             width: "100%",
             marginRight: "4rem",
           }),
-          control: (baseStyles, state) => ({
+          control: (baseStyles) => ({
             ...baseStyles,
             backgroundColor: "#17151d",
             border: "#17151d",
           }),
-          placeholder: (baseStyles, state) => ({
+          placeholder: (baseStyles) => ({
             ...baseStyles,
             color: "white",
+          }),
+          option: (baseStyles) => ({
+            ...baseStyles,
+            cursor: "pointer",
+            color: (state) => state.isFocused && "#7d30f5",
           }),
         }}
       />
@@ -76,7 +81,7 @@ const Container = styled.div`
   border-radius: 10px;
   border: white 0.2 linear;
   padding: 1rem 1rem;
-  margin: 1rem 2rem 1rem 1rem;
+  margin: 0.4rem 2rem 1rem 1rem;
   height: 2rem;
   width: 100%;
 `;
