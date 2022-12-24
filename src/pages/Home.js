@@ -35,7 +35,7 @@ const Page = styled.div`
 export const Top = styled.div`
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: flex-start;
   margin: 0 0.5rem;
 `;
 
@@ -48,7 +48,7 @@ export const Bottom = styled.div`
 export const IconContainer = styled.div`
   background: #241f2a;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin: 0.3rem 0 1rem;
   border-radius: 10px;
   max-width: 5vw;
   width: 100%;
