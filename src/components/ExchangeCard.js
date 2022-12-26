@@ -7,9 +7,8 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 const ExchangeCard = () => {
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.details
-  );
+  const { coinDetailsList, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.crypto.coinDetails);
 
   if (isLoading) {
     return <Loading />;
@@ -22,7 +21,7 @@ const ExchangeCard = () => {
   if (isSuccess) {
     const {
       market_data: { current_price },
-    } = list;
+    } = coinDetailsList;
 
     return (
       <Container>

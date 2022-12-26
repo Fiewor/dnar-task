@@ -1,6 +1,5 @@
 import axios from "axios";
-
-export const URI = "https://api.coingecko.com/api/v3";
+import { URI } from "./index";
 
 export async function fetchCoinList() {
   return axios

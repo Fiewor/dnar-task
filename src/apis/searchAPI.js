@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URI } from "../coin/coinAPI";
+import { URI } from "./index";
 
 export async function fetchSearchList(searchInput) {
   console.log("search input: ", searchInput);

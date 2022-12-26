@@ -11,7 +11,7 @@ Chart.register(CategoryScale);
 
 const Graph = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.details
+    (state) => state.coinDetailsList
   );
 
   if (isLoading) {

@@ -4,6 +4,7 @@ import "./Loading.css";
 import { MdCancel } from "react-icons/md";
 
 const Error = ({ message }) => {
+  console.log("error message: ", message);
   return (
     <Container>
       <MdCancel color="white" size="1.5em" />

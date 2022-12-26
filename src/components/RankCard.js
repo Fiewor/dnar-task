@@ -6,7 +6,7 @@ import Error from "./Error";
 
 const RankCard = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.details
+    (state) => state.coinDetailsList
   );
 
   if (isLoading) {

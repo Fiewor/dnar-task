@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { listCoinDetails } from "../features/details/detailsSlice";
+import { listCoinDetails } from "../features/crypto/cryptoSlice";
 
 const MarketCard = ({ id, name, symbol, price, change }) => {
   const dispatch = useDispatch();
