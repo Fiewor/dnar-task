@@ -31,9 +31,10 @@ const EventsBar = () => {
 const Container = styled.div`
   background: #241f2a;
   color: white;
-  margin: 1rem;
-  padding: 1rem 0.2rem;
+  margin: 0 0.5rem;
+  padding: 1rem 0.4rem;
   border-radius: 20px;
+  width: 40%;
   @media (max-width: 768px) {
     display: none;
   }

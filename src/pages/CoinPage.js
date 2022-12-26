@@ -24,16 +24,15 @@ export default CoinPage;
 const Container = styled.div`
   background-color: #241f2a;
   border-radius: 30px;
-  padding: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width: 60%;
+  width: 95%;
   min-width: 50vw;
   min-height: 30vh;
-  margin: 0.5em;
+  margin: 0 1em 1em;
 
   @media (max-width: 768px) {
     margin: 0;
