@@ -4,20 +4,24 @@ import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
-import { P } from "./CoinList";
+
+import Loading from "./Loading";
+import Error from "./Error";
 Chart.register(CategoryScale);
 
 const Graph = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.details
   );
+
   if (isLoading) {
-    return <P>Loading...</P>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <P>Error: {message}</P>;
+    return <Error message={message} />;
   }
+
   if (isSuccess) {
     const {
       market_data: {
@@ -39,7 +43,7 @@ const Graph = () => {
           <Change
             style={{ color: String(change)[0] === "-" ? "red" : "green" }}
           >
-            {change}
+            {String(change)[0] === "-" ? change : `+${String(change)}`}
           </Change>
         </Top>
         <Bottom>
@@ -61,7 +65,7 @@ const Graph = () => {
                 {
                   label: "",
                   // y-axis data plotting values
-                  data: [0, 10, 20, 30, 40, 50, 60],
+                  data: [40, 50, 18, 30, 33, 15, 31, 38, 40],
                   fill: false,
                   borderWidth: 3,
                   backgroundColor: "#3d3942",
