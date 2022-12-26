@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -9,14 +9,26 @@ import { Coin } from "./Coin";
 
 const CoinList = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(listCoins());
-  }, []);
-
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const { list, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.coin
   );
+
+  useEffect(() => {
+    dispatch(listCoins());
+  }, [isOnline]);
+
+  useEffect(() => {
+    const handleStatusChange = () => setIsOnline(navigator.onLine);
+
+    window.addEventListener("online", handleStatusChange);
+    window.addEventListener("offline", handleStatusChange);
+
+    return () => {
+      window.removeEventListener("online", handleStatusChange);
+      window.removeEventListener("offline", handleStatusChange);
+    };
+  }, [isOnline]);
 
   if (isLoading) {
     return <Loading />;

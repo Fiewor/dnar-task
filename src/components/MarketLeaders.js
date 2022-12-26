@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -9,14 +9,26 @@ import Error from "./Error";
 
 function MarketLeaders() {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(listMarketLeaders());
-  }, []);
-
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const { list, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.market
   );
+
+  useEffect(() => {
+    dispatch(listMarketLeaders());
+  }, [isOnline]);
+
+  useEffect(() => {
+    const handleStatusChange = () => setIsOnline(navigator.onLine);
+
+    window.addEventListener("online", handleStatusChange);
+    window.addEventListener("offline", handleStatusChange);
+
+    return () => {
+      window.removeEventListener("online", handleStatusChange);
+      window.removeEventListener("offline", handleStatusChange);
+    };
+  }, [isOnline]);
 
   if (isLoading) {
     return <Loading />;
