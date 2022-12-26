@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { FaReddit, FaGithub, FaChrome } from "react-icons/fa";
-import { P } from "./CoinList";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const InfoCard = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
@@ -10,11 +11,11 @@ const InfoCard = () => {
   );
 
   if (isLoading) {
-    return <P>Loading...</P>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <P>Error: {message}</P>;
+    return <Error message={message} />;
   }
 
   if (isSuccess) {

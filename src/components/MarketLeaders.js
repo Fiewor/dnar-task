@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 import { listMarketLeaders } from "../features/market/marketSlice";
 import MarketCard from "./MarketCard";
-import { P } from "./CoinList";
+import Loading from "./Loading";
+import Error from "./Error";
 
 function MarketLeaders() {
   const dispatch = useDispatch();
@@ -18,11 +19,11 @@ function MarketLeaders() {
   );
 
   if (isLoading) {
-    return <P>Loading...</P>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <P>Error: {message}</P>;
+    return <Error message={message} />;
   }
 
   if (isSuccess) {

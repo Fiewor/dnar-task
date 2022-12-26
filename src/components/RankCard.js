@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { P } from "./CoinList";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const RankCard = () => {
   const { list, isLoading, isError, isSuccess, message } = useSelector(
@@ -9,11 +10,11 @@ const RankCard = () => {
   );
 
   if (isLoading) {
-    return <P>Loading...</P>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <P>Error: {message}</P>;
+    return <Error message={message} />;
   }
 
   if (isSuccess) {

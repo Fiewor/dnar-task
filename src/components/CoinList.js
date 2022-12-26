@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
+import Loading from "./Loading";
+import Error from "./Error";
 import { listCoins } from "../features/coin/coinSlice";
 import { Coin } from "./Coin";
 
@@ -17,11 +19,11 @@ const CoinList = () => {
   );
 
   if (isLoading) {
-    return <P>Loading...</P>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <P>Error: {message}</P>;
+    return <Error message={message} />;
   }
 
   if (isSuccess) {
@@ -44,10 +46,4 @@ const Container = styled.div`
   gap: 0.5rem;
   width: 100%;
   padding: 1rem 0.5rem;
-`;
-
-export const P = styled.p`
-  align-self: center;
-  font-size: 2rem;
-  color: white;
 `;
