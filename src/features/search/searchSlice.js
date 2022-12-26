@@ -39,6 +39,7 @@ export const searchSlice = createSlice({
       .addCase(listSearchItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.isError = false;
         state.coins = action.payload;
       })
       .addCase(listSearchItems.rejected, (state, action) => {

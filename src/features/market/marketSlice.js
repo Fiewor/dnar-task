@@ -39,6 +39,7 @@ export const marketSlice = createSlice({
       .addCase(listMarketLeaders.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.isError = false;
         state.list = action.payload;
       })
       .addCase(listMarketLeaders.rejected, (state, action) => {

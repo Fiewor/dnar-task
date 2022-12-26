@@ -39,6 +39,7 @@ export const coinSlice = createSlice({
       .addCase(listCoins.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.isError = false;
         state.list = action.payload;
       })
       .addCase(listCoins.rejected, (state, action) => {
