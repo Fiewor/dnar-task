@@ -15,7 +15,7 @@ function MarketLeaders() {
 
   useEffect(() => {
     dispatch(listMarketLeaders());
-  }, [isOnline]);
+  }, [dispatch, isOnline]);
 
   useEffect(() => {
     const handleStatusChange = () => setIsOnline(navigator.onLine);

@@ -10,9 +10,8 @@ import Error from "./Error";
 Chart.register(CategoryScale);
 
 const Graph = () => {
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.coinDetailsList
-  );
+  const { coinDetailsList, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.crypto.coinDetails);
 
   if (isLoading) {
     return <Loading />;
@@ -28,7 +27,7 @@ const Graph = () => {
         current_price: { usd },
         price_change_percentage_24h: change,
       },
-    } = list;
+    } = coinDetailsList;
 
     // console.log("graph list: ", list);
     return (

@@ -5,9 +5,8 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 const RankCard = () => {
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.coinDetailsList
-  );
+  const { coinDetailsList, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.crypto.coinDetails);
 
   if (isLoading) {
     return <Loading />;
@@ -20,7 +19,7 @@ const RankCard = () => {
   if (isSuccess) {
     const {
       public_interest_stats: { alexa_rank },
-    } = list;
+    } = coinDetailsList;
 
     return (
       <Container>
