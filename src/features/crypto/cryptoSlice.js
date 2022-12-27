@@ -155,7 +155,7 @@ export const cryptoSlice = createSlice({
         state.marketLeaders.isLoading = false;
         state.marketLeaders.isSuccess = true;
         state.marketLeaders.isError = false;
-        state.marketLeaders.marketList = action.payload;
+        state.marketLeaders.marketLeadersList = action.payload;
       })
       .addCase(listMarketLeaders.rejected, (state, action) => {
         state.marketLeaders.isLoading = false;
