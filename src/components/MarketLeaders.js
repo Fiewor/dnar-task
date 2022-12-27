@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
-import { listMarketLeaders } from "../features/market/marketSlice";
+import { listMarketLeaders } from "../features/crypto/cryptoSlice";
 import MarketCard from "./MarketCard";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -10,13 +10,12 @@ import Error from "./Error";
 function MarketLeaders() {
   const dispatch = useDispatch();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.market
-  );
+  const { marketLeadersList, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.crypto.marketLeaders);
 
   useEffect(() => {
     dispatch(listMarketLeaders());
-  }, [isOnline]);
+  }, [dispatch, isOnline]);
 
   useEffect(() => {
     const handleStatusChange = () => setIsOnline(navigator.onLine);
@@ -41,7 +40,7 @@ function MarketLeaders() {
   if (isSuccess) {
     return (
       <Container>
-        {list.map(
+        {marketLeadersList.map(
           ({
             id,
             name,

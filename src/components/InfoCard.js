@@ -6,9 +6,8 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 const InfoCard = () => {
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.details
-  );
+  const { coinDetailsList, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.crypto.coinDetails);
 
   if (isLoading) {
     return <Loading />;
@@ -35,7 +34,7 @@ const InfoCard = () => {
       },
 
       market_data: { total_supply, max_supply, circulating_supply },
-    } = list;
+    } = coinDetailsList;
 
     return (
       <Container>
@@ -84,7 +83,7 @@ const InfoCard = () => {
             <Title>Category</Title>
             <ValueContainer>
               {categories
-                .filter((_, i) => i < 3)
+                .filter((_, i) => i < 3) // show 3 categories max
                 .map((category, id) => (
                   <Value key={id}>{category}</Value>
                 ))}

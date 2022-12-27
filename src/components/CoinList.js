@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 import Loading from "./Loading";
 import Error from "./Error";
-import { listCoins } from "../features/coin/coinSlice";
+import { listCoins } from "../features/crypto/cryptoSlice";
 import { Coin } from "./Coin";
 
 const CoinList = () => {
   const dispatch = useDispatch();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const { list, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.coin
+  const { allCoinsList, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.crypto.allCoins
   );
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const CoinList = () => {
   if (isSuccess) {
     return (
       <Container>
-        {list.map(({ id, name, symbol }) => (
+        {allCoinsList.map(({ id, name, symbol }) => (
           <Coin key={id} name={name} symbol={symbol} />
         ))}
       </Container>

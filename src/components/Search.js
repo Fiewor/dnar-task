@@ -5,8 +5,11 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import AsyncSelect from "react-select/async";
 
-import { listSearchItems } from "../features/search/searchSlice";
-import { listCoinDetails, reset } from "../features/details/detailsSlice";
+import {
+  listSearchItems,
+  listCoinDetails,
+  reset,
+} from "../features/crypto/cryptoSlice";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -17,14 +20,12 @@ const Search = () => {
     navigate("/details");
   };
 
-  const { coins, isSuccess } = useSelector((state) => state.search);
-
-  useEffect(() => {}, [isSuccess]);
+  const { searchList } = useSelector((state) => state.crypto.search);
 
   const handleSearch = (inputValue) => {
     // dispatch(reset());
     dispatch(listSearchItems(inputValue));
-    return coins.map(({ id, name, symbol }) => ({
+    return searchList.map(({ id, name, symbol }) => ({
       label: name,
       value: name,
     }));
